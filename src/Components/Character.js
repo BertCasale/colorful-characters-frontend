@@ -10,6 +10,7 @@ export default function Character({character}) {
           <h5 className="card-text">{character.game}</h5>
           {character.lgbt ? <h4 className="card-text">LGBTQ: {character.lgbt_type}</h4> : null}
           {character.poc ? <h4 className="card-text">Person of Color: {character.poc_type}</h4> : null}
+          {/* {character.disability ? <h4 className="card-text">Disabled: {character.disablity_type}</h4> : null} */}
         </div>
       </div>
     </Link>
