@@ -1,6 +1,6 @@
 import axios from "axios";
-import {useState, useEffect} from "react";
-import { useNavigate, Link } from "react-router-dom";
+import {useState} from "react";
+import { useNavigate } from "react-router-dom";
 const API = process.env.REACT_APP_API_URL;
 
 export default function CharacterNew() {
