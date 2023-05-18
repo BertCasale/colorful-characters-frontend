@@ -1,9 +1,9 @@
+import axios from "axios";
 import {useState, useEffect} from "react";
-import { useNavigate, useParams, Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 const API = process.env.REACT_APP_API_URL;
 
 export default function CharacterNew() {
-  const {id} = useParams();
   const navigate = useNavigate();
   const [character, setCharacter] = useState({
     name: "",
@@ -28,8 +28,24 @@ export default function CharacterNew() {
     setCharacter({...character, [event.target.id]: event.target.checked});
   }
 
+  const addNewCharacter = (newCharacter) => {
+    axios.post(`${API}/characters`, newCharacter)
+    .then(() => {
+      navigate("/characters");
+    })
+    .catch((e) => console.warn("catch", e))
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    if (character.lgbt_type || character.poc_type | character.disability_type) {
+      addNewCharacter(character);
+    }
+  }
+
   return(<div className="CharacterNew">
-    <form className="needs-validation">
+    <form className="needs-validation" onSubmit={handleSubmit}>
 
       <div className="row text-start m-3">
 
@@ -48,7 +64,7 @@ export default function CharacterNew() {
         </div>
 
         <div className="col-6">
-        <label htmlFor="game" className="form-label">Game</label>
+          <label htmlFor="game" className="form-label">Game</label>
           <input 
             className={`form-control ${character.game ? "is-valid" : "is-invalid"}`}
             type="text"
@@ -62,7 +78,7 @@ export default function CharacterNew() {
         </div>
 
         <div className="col-12">
-        <label htmlFor="description" className="form-label">Description</label>
+          <label htmlFor="description" className="form-label">Description</label>
           <textarea 
             className={`form-control ${character.description ? "is-valid" : "is-invalid"}`}
             type="text"
@@ -73,6 +89,20 @@ export default function CharacterNew() {
             onChange={handleTextChange}
             required/>
           <div className="invalid-feedback">Please enter the description.</div>
+        </div>
+
+        <div className="col-12">
+          <label htmlFor="Image" className="form-label">Image URL</label>
+          <input 
+            className={`form-control ${character.image ? "is-valid" : "is-invalid"}`}
+            type="text"
+            placeholder="https://"
+            name="image"
+            id="image"
+            value={character.image}
+            onChange={handleTextChange}
+            required/>
+          <div className="invalid-feedback">Please enter the image URL.</div>
         </div>
       </div>
 
