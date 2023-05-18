@@ -14,7 +14,19 @@ export default function CharacterDetails() {
       setCharacter(res.data)
     })
     .catch((e) => console.warn("catch", e))
-  }, [id])
+  }, [id]);
+
+  const deleteCharacter = () => {
+    axios.delete(`${API}/characters/${id}`)
+    .then(() => {
+      navigate("/characters");
+    })
+    .catch((e) => console.warn("catch", e));
+  }
+
+  const handleDelete = () => {
+    deleteCharacter()
+  }
 
   return(<div className="CharacterDetails">
     <h2>{character.name}</h2>
@@ -30,8 +42,25 @@ export default function CharacterDetails() {
     </span>
     
     <button>Edit</button>
-    <button>Delete</button>
+    <button data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
     <button>Back to Characters</button>
+
+    <div className="modal fade" id="deleteModal" tabIndex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+      <div className="modal-dialog">
+        <div className="modal-content">
+          
+          <div className="modal-header">
+            <h1 className="modal-title" id="deleteModalLabel">Are you sure you want to delete character!</h1>
+          </div>
+
+          <div className="modal-body">
+            <button className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button className="btn btn-danger" onClick={handleDelete} data-bs-dismiss="modal">Delete</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
 
   </div>);
 }
