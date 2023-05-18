@@ -38,12 +38,13 @@ export default function CharacterDetails() {
       <h5>Playable:{character.playable ? " ⭐️" : " ❌"}</h5>
       <h5>LGBTQ:{character.lgbt ?  ` ⭐️ ${character.lgbt_type}` : " ❌"}</h5> 
       <h5>Person of Color:{character.poc ? ` ⭐️ ${character.poc_type}` : " ❌"}</h5>
-      {/* <h5>Disabled:{character.disability ? ` ⭐️ ${character.disability_type}` : " ❌"}</h5> */}
+      <h5>Disabled:{character.disability ? ` ⭐️ ${character.disability_type}` : " ❌"}</h5>
     </span>
     
-    <button>Edit</button>
+    <Link to={`/characters/${id}/edit`}><button>Edit</button></Link>
     <button data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
-    <button>Back to Characters</button>
+    <Link to="/characters"><button>Back to Characters</button></Link>
+
 
     <div className="modal fade" id="deleteModal" tabIndex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
       <div className="modal-dialog">
