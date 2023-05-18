@@ -113,8 +113,8 @@ export default function CharacterNew() {
             type="checkbox" 
             name="playable"
             id="playable"
-            value={character.playable}
-            onChange={handleTextChange}
+            checked={character.playable}
+            onChange={handleCheckChange}
             />
           <label htmlFor="playable" className="form-check-label">Playable</label>
         </div>
@@ -125,8 +125,8 @@ export default function CharacterNew() {
             type="checkbox" 
             name="main character"
             id="protagonist"
-            value={character.protagonist}
-            onChange={handleTextChange}
+            checked={character.protagonist}
+            onChange={handleCheckChange}
             />
           <label htmlFor="main character" className="form-check-label">Main Character</label>
         </div>

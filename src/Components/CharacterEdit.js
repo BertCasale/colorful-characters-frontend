@@ -1,3 +1,4 @@
+import axios from "axios";
 import {useState, useEffect} from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 const API = process.env.REACT_APP_API_URL;
@@ -20,6 +21,14 @@ export default function CharacterEdit() {
     disability_type: ""
   });
 
+  useEffect(() => {
+    axios.get(`${API}/characters/${id}`)
+    .then((res) => {
+      setCharacter(res.data)
+    })
+    .catch((e) => console.warn("catch", e))
+  }, [id])
+
   const handleTextChange = (event) => {
     setCharacter({...character, [event.target.id]: event.target.value});
   }
@@ -28,8 +37,24 @@ export default function CharacterEdit() {
     setCharacter({...character, [event.target.id]: event.target.checked});
   }
 
+  const editCharacter = (updatedCharacter) => {
+    axios.put(`${API}/characters/${id}`, updatedCharacter)
+    .then(() => {
+      navigate(`/characters/${id}`);
+    })
+    .catch((e) => console.warn("catch", e))
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    if (character.lgbt_type || character.poc_type | character.disability_type) {
+      editCharacter(character, id);
+    }
+  }
+
   return(<div className="CharacterEdit">
-    <form className="needs-validation">
+    <form className="needs-validation" onSubmit={handleSubmit}>
 
       <div className="row text-start m-3">
 
@@ -97,8 +122,8 @@ export default function CharacterEdit() {
             type="checkbox" 
             name="playable"
             id="playable"
-            value={character.playable}
-            onChange={handleTextChange}
+            checked={character.playable}
+            onChange={handleCheckChange}
             />
           <label htmlFor="playable" className="form-check-label">Playable</label>
         </div>
@@ -109,8 +134,8 @@ export default function CharacterEdit() {
             type="checkbox" 
             name="main character"
             id="protagonist"
-            value={character.protagonist}
-            onChange={handleTextChange}
+            checked={character.protagonist}
+            onChange={handleCheckChange}
             />
           <label htmlFor="main character" className="form-check-label">Main Character</label>
         </div>
@@ -133,7 +158,7 @@ export default function CharacterEdit() {
             type="text"
             placeholder="Type"
             id="lgbt_type"
-            value={character.lgbt_type}
+            value={character.lgbt_type ? character.lgbt_type : ""}
             onChange={handleTextChange}
             disabled={!character.lgbt}/>
         </div>
@@ -153,7 +178,7 @@ export default function CharacterEdit() {
             type="text"
             placeholder="Type"
             id="poc_type"
-            value={character.poc_type}
+            value={character.poc_type ? character.poc_type : ""}
             onChange={handleTextChange}
             disabled={!character.poc}/>
         </div>
@@ -173,7 +198,7 @@ export default function CharacterEdit() {
             type="text"
             placeholder="Type"
             id="disability_type"
-            value={character.disability_type}
+            value={character.disability_type ? character.disability_type : ""}
             onChange={handleTextChange}
             disabled={!character.disability}/>
         </div>
