@@ -1,0 +1,13 @@
+.game-list {
+  gap: 30px;
+}
+
+.Games .search {
+display: flex;
+justify-content: center;
+margin: 10px 0px 30px;
+}
+
+.Games .search .new-game{
+  margin-left: 20px;
+}

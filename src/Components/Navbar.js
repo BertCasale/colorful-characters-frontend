@@ -7,7 +7,8 @@ export default function Navbar() {
     <Link to="/" className="logo"><img src={Logo} alt="ColorfulCharacters Logo" height="70px"/></Link>
     <Link to="/" className="title"><h1>Colorful Characters</h1></Link>
     <span className="button-span">
-      <Link to="/characters" className="characters-button"><button>Characters</button></Link>
+      <Link to="/characters"><button className="btn btn-primary characters-button">Characters</button></Link>
+      <Link to="/games"><button className="btn btn-primary games-button">Games</button></Link>
     </span>
   </div>);
 }

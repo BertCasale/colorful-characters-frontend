@@ -3,6 +3,7 @@
   position: sticky;
   z-index: 3000;
   background-color: #7FFFD3;
+  border-bottom: 3px double rgb(38, 172, 103);
   align-items: center;
   display: flex;
   height: 110px;
@@ -22,5 +23,8 @@
 
 .Navbar .button-span {
   margin-right: 20px;
+}
 
+.Navbar .btn {
+  margin-left: 5px;
 }

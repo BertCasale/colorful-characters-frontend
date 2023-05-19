@@ -10,7 +10,7 @@ export default function CharacterEdit() {
     name: "",
     image: "",
     description: "",
-    game: "",
+    game_id: 0,
     protagonist: false,
     playable: false,
     lgbt: false,
@@ -74,15 +74,20 @@ export default function CharacterEdit() {
 
         <div className="col-6">
           <label htmlFor="game" className="form-label">Game</label>
-          <input 
-            className={`form-control ${character.game ? "is-valid" : "is-invalid"}`}
+          <select 
+            className={`form-select ${character.game_id ? "is-valid" : "is-invalid"}`}
             type="text"
             placeholder="Game"
             name="game"
-            id="game"
-            value={character.game}
+            id="game_id"
+            value={character.game_id}
             onChange={handleTextChange}
-            required/>
+            required>
+
+            <option value="">Select a Game</option> 
+            <option value={1}>Dragon</option>
+
+          </select>
           <div className="invalid-feedback">Please enter a game.</div>
         </div>
 
