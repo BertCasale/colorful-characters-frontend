@@ -1,3 +1,5 @@
+import "./Filters.css"
+
 export default function Filters() {
   return (<aside className="Filters">
 
@@ -9,7 +11,8 @@ export default function Filters() {
       <option value="gameDesc">Game: desc</option>
     </select>
 
-    <span className="filter-span">Filter:
+    <div className="filter-span">
+      <h5>Filter:</h5>
       <div className="form-check">
         <input className="form-check-input" type="checkbox" id="lgbt"/>
         <label className="form-check-label" htmlFor="lgbt">LGBTQ</label>
@@ -22,7 +25,7 @@ export default function Filters() {
         <input className="form-check-input" type="checkbox" id="disability"/>
         <label className="form-check-label" htmlFor="disability">Disability</label>
       </div>
-    </span>
+    </div>
 
   </aside>)
 }

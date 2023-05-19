@@ -3,6 +3,7 @@ import Filters from "./Filters.js";
 import Searchbar from "./Searchbar.js";
 import axios from "axios";
 import {useState, useEffect} from "react";
+import { Link } from "react-router-dom";
 import "./Characters.css"
 const API = process.env.REACT_APP_API_URL;
 
@@ -20,8 +21,12 @@ export default function Characters() {
   }, []);
 
   return(<div className="Characters">
-    <Searchbar/>
     <h2>Characters</h2>
+    <div className="search">
+      <Searchbar/>    
+      <Link to="/characters/new" className="new-character"><button>New Character</button></Link>
+    </div>
+
     <div className="d-flex">
       <Filters setCharacters={setCharacters} allCharacters={allCharacters}/>
    

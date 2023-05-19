@@ -1,3 +1,13 @@
 .character-list {
   gap: 30px;
 }
+
+.Characters .search {
+display: flex;
+justify-content: center;
+margin: 10px 0px 30px;
+}
+
+.Characters .search .new-character{
+  margin-left: 20px;
+}

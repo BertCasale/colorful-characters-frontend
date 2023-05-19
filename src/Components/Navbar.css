@@ -1,0 +1,26 @@
+.Navbar{
+  top: 0px;
+  position: sticky;
+  z-index: 3000;
+  background-color: #7FFFD3;
+  align-items: center;
+  display: flex;
+  height: 110px;
+  text-align: center;
+  justify-content: space-between;
+}
+
+.Navbar .logo {
+  margin-left: 20px;
+
+}
+
+.Navbar .title {
+  text-decoration: none;
+  color: rgb(150, 39, 184);
+}
+
+.Navbar .button-span {
+  margin-right: 20px;
+
+}
