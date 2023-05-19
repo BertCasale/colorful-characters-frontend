@@ -28,7 +28,7 @@ export default function Characters() {
     </div>
 
     <div className="d-flex">
-      <Filters setCharacters={setCharacters} allCharacters={allCharacters}/>
+      <Filters setData={setCharacters} allData={allCharacters}/>
    
 
       <div className="character-list d-flex flex-wrap justify-content-start">
