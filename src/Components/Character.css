@@ -1,0 +1,26 @@
+.Character .card {
+  max-width: 175px;
+  box-shadow: 5px 5px 10px 1px rgb(38, 172, 103);
+  height: 100%;
+  background-color: aquamarine;
+  transition: all .5s ease-in-out;
+}
+
+.Character:hover .card{
+  transform: scale(1.1);
+}
+
+.Character a{
+  text-decoration: none;
+}
+
+.Character h2 {
+  font-size: 20px;
+}
+.Character h5 {
+  font-size: 12px;
+}
+.Character h4 {
+  font-size: 15px;
+  color: rgb(150, 39, 184);
+}
