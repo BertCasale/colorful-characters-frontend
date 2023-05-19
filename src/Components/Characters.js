@@ -3,15 +3,18 @@ import Filters from "./Filters.js";
 import Searchbar from "./Searchbar.js";
 import axios from "axios";
 import {useState, useEffect} from "react";
+import "./Characters.css"
 const API = process.env.REACT_APP_API_URL;
 
 export default function Characters() {
   const [allCharacters, setAllCharacters] = useState([]);
+  const [characters, setCharacters] = useState([]);
 
   useEffect(() => {
     axios.get(`${API}/characters`)
     .then((res) => {
       setAllCharacters(res.data);
+      setCharacters(res.data);
     })
     .catch((e) => console.warn(e));
   }, []);
@@ -20,11 +23,11 @@ export default function Characters() {
     <Searchbar/>
     <h2>Characters</h2>
     <div className="d-flex">
-      <Filters/>
+      <Filters setCharacters={setCharacters} allCharacters={allCharacters}/>
    
 
       <div className="character-list d-flex flex-wrap justify-content-start">
-        {allCharacters.map((character) => {
+        {characters.map((character) => {
           return(<Character key={character.id} character={character}/>)
         })}
       </div>

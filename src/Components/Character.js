@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"; 
+import "./Character.css";
 
 export default function Character({character}) {
   return(<div className="Character">
