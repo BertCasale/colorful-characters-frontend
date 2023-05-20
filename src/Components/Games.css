@@ -1,0 +1,12 @@
+.game-list {
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.Games .new-game{
+  margin-bottom: 20px;
+}
+
+.Games .no-results {
+  color: rgb(150, 39, 184);
+}

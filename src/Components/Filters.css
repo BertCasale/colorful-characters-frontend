@@ -1,0 +1,15 @@
+.Filters {
+  margin: 20px;
+  background-color: #7FFFD3;
+  padding: 10px;
+  height: max-content;
+  position: sticky;
+  top: 140px;
+}
+
+.Filters .filter-span {
+  padding-left: 10px;
+  text-align: left;
+  margin-top: 10px;
+  background-color: white;
+}
