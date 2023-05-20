@@ -1,5 +1,5 @@
 import axios from "axios";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 const API = process.env.REACT_APP_API_URL;
 
@@ -19,6 +19,24 @@ export default function CharacterNew() {
     disability: false,
     disability_type: ""
   });
+  const [games, setGames] = useState([]);
+
+  useEffect(() => {
+    axios.get(`${API}/games`)
+    .then((res) => {
+        const sortedGames = res.data.sort((a, b) => {
+        if (a.name.toLowerCase() < b.name.toLowerCase()){
+          return -1
+        } else if (a.name.toLowerCase() > b.name.toLowerCase()){
+          return 1
+        } else {
+          return -0
+        } 
+      })
+      setGames(sortedGames);
+    })
+    .catch((e) => console.warn("catch", e))
+  }, []);
 
   const handleTextChange = (event) => {
     setCharacter({...character, [event.target.id]: event.target.value});
@@ -77,6 +95,9 @@ export default function CharacterNew() {
             required>
             
             <option value="">Select a Game</option>
+            {games.map((game) => {
+              return (<option key={game.id} value={game.id}>{game.name}</option>)
+            })} 
           
           </select>
           <div className="invalid-feedback">Please select a game.</div>

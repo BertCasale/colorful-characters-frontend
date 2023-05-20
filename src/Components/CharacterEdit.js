@@ -20,14 +20,33 @@ export default function CharacterEdit() {
     disability: false,
     disability_type: ""
   });
+  const [games, setGames] = useState([]);
 
   useEffect(() => {
     axios.get(`${API}/characters/${id}`)
     .then((res) => {
+      
       setCharacter(res.data)
     })
     .catch((e) => console.warn("catch", e))
-  }, [id])
+  }, [id]);
+
+  useEffect(() => {
+    axios.get(`${API}/games`)
+    .then((res) => {
+        const sortedGames = res.data.sort((a, b) => {
+        if (a.name.toLowerCase() < b.name.toLowerCase()){
+          return -1
+        } else if (a.name.toLowerCase() > b.name.toLowerCase()){
+          return 1
+        } else {
+          return -0
+        } 
+      })
+      setGames(sortedGames);
+    })
+    .catch((e) => console.warn("catch", e))
+  }, []);
 
   const handleTextChange = (event) => {
     setCharacter({...character, [event.target.id]: event.target.value});
@@ -84,8 +103,11 @@ export default function CharacterEdit() {
             onChange={handleTextChange}
             required>
 
-            <option value="">Select a Game</option> 
-            <option value={1}>Dragon</option>
+            <option value="">Select a Game</option>
+            {games.map((game) => {
+              return (<option key={game.id} value={game.id}>{game.name}</option>)
+            })} 
+            
 
           </select>
           <div className="invalid-feedback">Please enter a game.</div>
