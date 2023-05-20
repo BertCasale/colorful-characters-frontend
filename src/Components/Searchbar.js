@@ -29,8 +29,8 @@ export default function Searchbar() {
   return (<div className="Searchbar">
     <form>
       <input type="text" placeholder="Search..." onChange={handleSearchTerm} value={searchTerm}/> 
-      <button onClick={handleCharacterSearch}>Search Characters</button>
-      <button onClick={handleGameSearch}>Search Games</button>
+      <button onClick={handleCharacterSearch} className="btn btn-secondary">Search Characters</button>
+      <button onClick={handleGameSearch} className="btn btn-secondary">Search Games</button>
     </form>
   </div>)
 }

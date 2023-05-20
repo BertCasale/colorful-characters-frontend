@@ -169,7 +169,7 @@ export default function GameEdit (){
         <div className={`text-start ${!game.lgbt && !game.poc && !game.disability ? "visible" : "invisible"}`}>Please select and enter a value for at least one option above.</div>
       </div>
 
-      <button type="submit">Submit</button>
+      <button type="submit" className="btn btn-success">Submit</button>
 
     </form>
   </div>);

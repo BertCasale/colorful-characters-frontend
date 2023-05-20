@@ -41,10 +41,11 @@ export default function CharacterDetails() {
       <h5>Disabled:{character.disability ? ` ⭐️ ${character.disability_type}` : " ❌"}</h5>
     </span>
     
-    <Link to={`/characters/${id}/edit`}><button>Edit</button></Link>
-    <button data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
-    <Link to="/characters"><button>Back to Characters</button></Link>
-
+    <div className="buttons">
+      <Link to={`/characters/${id}/edit`}><button className="btn btn-warning">Edit</button></Link>
+      <button data-bs-toggle="modal" data-bs-target="#deleteModal" className="btn btn-danger">Delete</button>
+      <Link to="/characters"><button className="btn btn-primary">Back to Characters</button></Link>
+    </div>
 
     <div className="modal fade" id="deleteModal" tabIndex="-1" aria-hidden="true">
       <div className="modal-dialog modal-dialog-centered">

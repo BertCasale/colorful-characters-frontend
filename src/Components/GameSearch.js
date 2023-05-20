@@ -24,7 +24,7 @@ export default function GamesSearch() {
   return(<div className="Games">
     <h2>Searched Games: {searchTerm}</h2>
   
-    <Link to="/games/new"><button className="new-game">New Game</button></Link>
+    <Link to="/games/new"><button className="new-game btn btn-success">New Game</button></Link>
 
     <div className="d-flex">
       <Filters setData={setGames} allData={allSearchedGames}/>

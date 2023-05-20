@@ -48,10 +48,12 @@ export default function GameDetails() {
       <h5>Person of Color:{game.poc ? " ⭐️" : " ❌"}</h5>
       <h5>Disabled:{game.disability ? " ⭐️"  : " ❌"}</h5>
     </span>
-
-    <Link to={`/games/${id}/edit`}><button>Edit</button></Link>
-    <button data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
-    <Link to="/games"><button>Back to Games</button></Link>
+    <div className="buttons">
+      <Link to={`/games/${id}/edit`}><button className="btn btn-warning">Edit</button></Link>
+      <button data-bs-toggle="modal" data-bs-target="#deleteModal" className="btn btn-danger">Delete</button>
+      <Link to="/games"><button className="btn btn-primary">Back to Games</button></Link>
+    </div>
+    
 
 
     <div className="modal fade" id="deleteModal" tabIndex="-1" aria-hidden="true">
@@ -73,7 +75,7 @@ export default function GameDetails() {
 
     <div className="game-characters">
       <h3>Characters</h3>
-      <Link to="/characters/new"><button>New Character</button></Link>
+      <Link to="/characters/new"><button className="btn btn-success">New Character</button></Link>
 
       {characters[0] ? 
       <table className="table table-striped table-hover">

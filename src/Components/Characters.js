@@ -22,7 +22,7 @@ export default function Characters() {
   return(<div className="Characters">
     <h2>Characters</h2>
 
-    <Link to="/characters/new"><button className="new-character">New Character</button></Link>
+    <Link to="/characters/new"><button className="new-character btn btn-success">New Character</button></Link>
 
     <div className="d-flex">
       <Filters setData={setCharacters} allData={allCharacters}/>
