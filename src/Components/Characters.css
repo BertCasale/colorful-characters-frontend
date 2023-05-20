@@ -2,12 +2,10 @@
   gap: 30px;
 }
 
-.Characters .search {
-display: flex;
-justify-content: center;
-margin: 10px 0px 30px;
+.Characters .new-character{
+  margin-bottom: 20px;
 }
 
-.Characters .search .new-character{
-  margin-left: 20px;
+.Characters .no-results{
+  color: rgb(150, 39, 184);
 }

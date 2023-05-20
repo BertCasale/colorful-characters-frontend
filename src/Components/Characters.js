@@ -1,6 +1,5 @@
 import Character from "../Components/Character.js";
 import Filters from "./Filters.js";
-import Searchbar from "./Searchbar.js";
 import axios from "axios";
 import {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
@@ -22,20 +21,20 @@ export default function Characters() {
 
   return(<div className="Characters">
     <h2>Characters</h2>
-    <div className="search">
-      <Searchbar/>    
-      <Link to="/characters/new" className="new-character"><button>New Character</button></Link>
-    </div>
+
+    <Link to="/characters/new"><button className="new-character">New Character</button></Link>
 
     <div className="d-flex">
       <Filters setData={setCharacters} allData={allCharacters}/>
    
-
+      {characters[0] ? 
       <div className="character-list d-flex flex-wrap justify-content-start">
         {characters.map((character) => {
           return(<Character key={character.id} character={character}/>)
         })}
-      </div>
+      </div>:
+      <h1 className="no-results">No results to display.</h1>}
+      
     </div>
 
   </div>);

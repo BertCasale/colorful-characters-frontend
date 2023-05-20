@@ -1,6 +1,5 @@
 import Game from "../Components/Game.js";
 import Filters from "./Filters.js";
-import Searchbar from "./Searchbar.js";
 import axios from "axios";
 import {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
@@ -22,20 +21,19 @@ export default function Games() {
 
   return(<div className="Games">
     <h2>Games</h2>
-    <div className="search">
-      <Searchbar/>    
-      <Link to="/games/new" className="new-game"><button>New Game</button></Link>
-    </div>
+  
+    <Link to="/games/new"><button className="new-game">New Game</button></Link>
 
     <div className="d-flex">
       <Filters setData={setGames} allData={allGames}/>
    
-
+      {games[0] ? 
       <div className="game-list d-flex flex-wrap justify-content-start">
         {games.map((game) => {
           return(<Game key={game.id} game={game}/>)
         })}
-      </div>
+      </div>:
+      <h1 className="no-results">No results to display.</h1>}
     </div>
 
   </div>);

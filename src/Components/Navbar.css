@@ -4,11 +4,15 @@
   z-index: 3000;
   background-color: #7FFFD3;
   border-bottom: 3px double rgb(38, 172, 103);
-  align-items: center;
-  display: flex;
   height: 110px;
   text-align: center;
+
+}
+
+.Navbar .links {
+  display: flex;  
   justify-content: space-between;
+   align-items: center;
 }
 
 .Navbar .logo {

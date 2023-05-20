@@ -2,12 +2,10 @@
   gap: 30px;
 }
 
-.Games .search {
-display: flex;
-justify-content: center;
-margin: 10px 0px 30px;
+.Games .new-game{
+  margin-bottom: 20px;
 }
 
-.Games .search .new-game{
-  margin-left: 20px;
+.Games .no-results {
+  color: rgb(150, 39, 184);
 }
