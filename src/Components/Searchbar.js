@@ -11,14 +11,19 @@ export default function Searchbar() {
 
   const handleCharacterSearch = (event) => {
     event.preventDefault();
-    setSearchTerm("");
-    navigate(`/characters/search?character=${searchTerm}`);
+    if (searchTerm){
+      setSearchTerm("");
+      navigate(`/characters/search?character=${searchTerm}`);
+    }
+    
   }
 
   const handleGameSearch = (event) => {
     event.preventDefault();
-    setSearchTerm("");
-    navigate(`/games/search?game=${searchTerm}`);
+    if (searchTerm){
+      setSearchTerm("");
+      navigate(`/games/search?game=${searchTerm}`);
+    }
   }
 
   return (<div className="Searchbar">
