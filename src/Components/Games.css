@@ -1,5 +1,6 @@
 .game-list {
   gap: 30px;
+  margin-bottom: 30px;
 }
 
 .Games .new-game{

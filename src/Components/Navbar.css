@@ -4,29 +4,38 @@
   z-index: 3000;
   background-color: #7FFFD3;
   border-bottom: 3px double rgb(38, 172, 103);
-  height: 110px;
+  height: fit-content;
   text-align: center;
 
 }
 
 .Navbar .links {
-  display: flex;  
-  justify-content: space-between;
-   align-items: center;
+  display: grid;  
+  align-items: center;
+  grid-template-areas: "logo title buttons";
+  grid-template-columns: 1fr 2fr 1fr;
 }
 
 .Navbar .logo {
+  grid-area: logo;
   margin-left: 20px;
-
+  text-align: left;
 }
 
 .Navbar .title {
+  height: fit-content;
+  grid-area: title;
+}
+
+.Navbar .title a {
   text-decoration: none;
   color: rgb(150, 39, 184);
 }
 
 .Navbar .button-span {
+  grid-area: buttons;
   margin-right: 20px;
+  text-align: right;
 }
 
 .Navbar .btn {

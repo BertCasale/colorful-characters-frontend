@@ -63,7 +63,7 @@ export default function GameNew() {
         <div className="col-6">
           <label htmlFor="release" className="form-label">Release Year</label>
           <input 
-            className={`form-select ${game.release ? "is-valid" : "is-invalid"}`}
+            className={`form-control ${game.release ? "is-valid" : "is-invalid"}`}
             type="number"
             placeholder="0000"
             name="release"

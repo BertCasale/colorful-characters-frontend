@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
+import "./CharacterDetails.css";
 const API = process.env.REACT_APP_API_URL;
 
 export default function CharacterDetails() {

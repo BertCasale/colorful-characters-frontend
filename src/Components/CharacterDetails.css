@@ -1,0 +1,13 @@
+.CharacterDetails .buttons{
+  margin: 20px;
+}
+
+.CharacterDetails p{
+  max-width: 500px;
+  text-align: left;
+  margin: 15px auto;
+}
+
+.CharacterDetails .classifications {
+  color: rgb(150, 39, 184);
+}

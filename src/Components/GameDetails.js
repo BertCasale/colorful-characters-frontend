@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
+import "./GameDetails.css";
 const API = process.env.REACT_APP_API_URL;
 
 export default function GameDetails() {
@@ -37,7 +38,7 @@ export default function GameDetails() {
     deleteGame()
   }
 
-  return(<div className="GamesDetails">
+  return(<div className="GameDetails">
     <h2>{game.name}</h2>
     <h3>Release: {game.release}</h3>
     <h4>{game.platforms}</h4>
