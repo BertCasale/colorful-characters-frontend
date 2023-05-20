@@ -3,24 +3,41 @@
   position: sticky;
   z-index: 3000;
   background-color: #7FFFD3;
-  align-items: center;
-  display: flex;
-  height: 110px;
+  border-bottom: 3px double rgb(38, 172, 103);
+  height: fit-content;
   text-align: center;
-  justify-content: space-between;
+
+}
+
+.Navbar .links {
+  display: grid;  
+  align-items: center;
+  grid-template-areas: "logo title buttons";
+  grid-template-columns: 1fr 2fr 1fr;
 }
 
 .Navbar .logo {
+  grid-area: logo;
   margin-left: 20px;
-
+  text-align: left;
 }
 
 .Navbar .title {
+  height: fit-content;
+  grid-area: title;
+}
+
+.Navbar .title a {
   text-decoration: none;
   color: rgb(150, 39, 184);
 }
 
 .Navbar .button-span {
+  grid-area: buttons;
   margin-right: 20px;
+  text-align: right;
+}
 
+.Navbar .btn {
+  margin-left: 5px;
 }

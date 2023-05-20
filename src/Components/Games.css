@@ -1,12 +1,12 @@
-.character-list {
+.game-list {
   gap: 30px;
   margin-bottom: 30px;
 }
 
-.Characters .new-character{
+.Games .new-game{
   margin-bottom: 20px;
 }
 
-.Characters .no-results{
+.Games .no-results {
   color: rgb(150, 39, 184);
 }

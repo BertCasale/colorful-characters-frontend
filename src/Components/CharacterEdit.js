@@ -10,7 +10,7 @@ export default function CharacterEdit() {
     name: "",
     image: "",
     description: "",
-    game: "",
+    game_id: 0,
     protagonist: false,
     playable: false,
     lgbt: false,
@@ -20,14 +20,33 @@ export default function CharacterEdit() {
     disability: false,
     disability_type: ""
   });
+  const [games, setGames] = useState([]);
 
   useEffect(() => {
     axios.get(`${API}/characters/${id}`)
     .then((res) => {
+      
       setCharacter(res.data)
     })
     .catch((e) => console.warn("catch", e))
-  }, [id])
+  }, [id]);
+
+  useEffect(() => {
+    axios.get(`${API}/games`)
+    .then((res) => {
+        const sortedGames = res.data.sort((a, b) => {
+        if (a.name.toLowerCase() < b.name.toLowerCase()){
+          return -1
+        } else if (a.name.toLowerCase() > b.name.toLowerCase()){
+          return 1
+        } else {
+          return -0
+        } 
+      })
+      setGames(sortedGames);
+    })
+    .catch((e) => console.warn("catch", e))
+  }, []);
 
   const handleTextChange = (event) => {
     setCharacter({...character, [event.target.id]: event.target.value});
@@ -74,15 +93,23 @@ export default function CharacterEdit() {
 
         <div className="col-6">
           <label htmlFor="game" className="form-label">Game</label>
-          <input 
-            className={`form-control ${character.game ? "is-valid" : "is-invalid"}`}
+          <select 
+            className={`form-select ${character.game_id ? "is-valid" : "is-invalid"}`}
             type="text"
             placeholder="Game"
             name="game"
-            id="game"
-            value={character.game}
+            id="game_id"
+            value={character.game_id}
             onChange={handleTextChange}
-            required/>
+            required>
+
+            <option value="">Select a Game</option>
+            {games.map((game) => {
+              return (<option key={game.id} value={game.id}>{game.name}</option>)
+            })} 
+            
+
+          </select>
           <div className="invalid-feedback">Please enter a game.</div>
         </div>
 
@@ -206,7 +233,7 @@ export default function CharacterEdit() {
         <div className={!character.lgbt_type && !character.poc_type && !character.disability_type ? "visible" : "invisible"}>Please select and enter a value for at least one option above.</div>
       </div>
 
-      <button type="submit">Submit</button>
+      <button type="submit" className="btn btn-success">Submit</button>
 
     </form>
   </div>);

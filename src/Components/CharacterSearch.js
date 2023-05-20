@@ -2,30 +2,32 @@ import Character from "../Components/Character.js";
 import Filters from "./Filters.js";
 import axios from "axios";
 import {useState, useEffect} from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import "./Characters.css"
 const API = process.env.REACT_APP_API_URL;
 
-export default function Characters() {
-  const [allCharacters, setAllCharacters] = useState([]);
+export default function CharactersSearch() {
+  const [allSearchedCharacters, setAllSearchedCharacters] = useState([]);
   const [characters, setCharacters] = useState([]);
+  const [searchParams] = useSearchParams();
+  const searchTerm = searchParams.get("character");
 
   useEffect(() => {
-    axios.get(`${API}/characters`)
+    axios.get(`${API}/characters/search?character=${searchTerm}`)
     .then((res) => {
-      setAllCharacters(res.data);
+      setAllSearchedCharacters(res.data);
       setCharacters(res.data);
     })
     .catch((e) => console.warn(e));
-  }, []);
+  }, [searchTerm]);
 
   return(<div className="Characters">
-    <h2>Characters</h2>
+    <h2>Searched Characters: {searchTerm}</h2>
 
     <Link to="/characters/new"><button className="new-character btn btn-success">New Character</button></Link>
 
     <div className="d-flex">
-      <Filters setData={setCharacters} allData={allCharacters}/>
+      <Filters setData={setCharacters} allData={allSearchedCharacters}/>
    
       {characters[0] ? 
       <div className="character-list d-flex flex-wrap justify-content-start">

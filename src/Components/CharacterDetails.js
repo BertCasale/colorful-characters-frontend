@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
+import "./CharacterDetails.css";
 const API = process.env.REACT_APP_API_URL;
 
 export default function CharacterDetails() {
@@ -41,17 +42,18 @@ export default function CharacterDetails() {
       <h5>Disabled:{character.disability ? ` ⭐️ ${character.disability_type}` : " ❌"}</h5>
     </span>
     
-    <Link to={`/characters/${id}/edit`}><button>Edit</button></Link>
-    <button data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
-    <Link to="/characters"><button>Back to Characters</button></Link>
+    <div className="buttons">
+      <Link to={`/characters/${id}/edit`}><button className="btn btn-warning">Edit</button></Link>
+      <button data-bs-toggle="modal" data-bs-target="#deleteModal" className="btn btn-danger">Delete</button>
+      <Link to="/characters"><button className="btn btn-primary">Back to Characters</button></Link>
+    </div>
 
-
-    <div className="modal fade" id="deleteModal" tabIndex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-      <div className="modal-dialog">
+    <div className="modal fade" id="deleteModal" tabIndex="-1" aria-hidden="true">
+      <div className="modal-dialog modal-dialog-centered">
         <div className="modal-content">
           
           <div className="modal-header">
-            <h1 className="modal-title" id="deleteModalLabel">Are you sure you want to delete character!</h1>
+            <h1 className="modal-title">Are you sure you want to delete character!</h1>
           </div>
 
           <div className="modal-body">
