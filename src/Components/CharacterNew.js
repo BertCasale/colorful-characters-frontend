@@ -58,7 +58,7 @@ export default function CharacterNew() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (character.lgbt_type || character.poc_type | character.disability_type) {
+    if (character.lgbt_type || character.poc_type || character.disability_type) {
       addNewCharacter(character);
     }
   }
